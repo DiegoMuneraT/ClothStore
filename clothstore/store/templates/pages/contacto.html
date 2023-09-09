@@ -1,0 +1,22 @@
+{% extends 'components/navbar.html' %}
+{%  block title %}Drots - Store {% endblock %}
+{% block content %}
+<div class="text-center">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre">
+    </div>
+    <div class="mb-3">
+        <label for="correo" class="form-label">Email</label>
+        <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com">
+    </div>
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Telefono</label>
+        <input type="text" class="form-control" id="telefono">
+    </div>
+    <div class="mb-3">
+        <label for="mensaje" class="form-label">Su mensaje</label>
+        <textarea class="form-control" id="mensaje" rows="3"></textarea>
+    </div>
+</div>
+{% endblock %}
