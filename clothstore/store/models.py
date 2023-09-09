@@ -9,18 +9,19 @@ class Order(models.Model):
     order_date = models.DateField()
     payment_method = models.CharField(max_length=50)
 
-class Prenda(models.Model):
-    prenda_id = models.AutoField(primary_key=True)
-    prenda_category = models.CharField(max_length=50)
-    prenda_price = models.IntegerField()
-    prenda_color = models.CharField(max_length=50)
-    prenda_size = models.CharField(max_length=50)
-    prenda_description = models.CharField(max_length=50)
+class Product(models.Model):
+    id = models.AutoField(primary_key=True)
+    category = models.CharField(max_length=50)
+    price = models.IntegerField()
+    color = models.CharField(max_length=50)
+    size = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='store/templates/images', default='images/default.avif')
 
 class Customer(models.Model):
-    customer_id = models.AutoField(primary_key=True)
-    customer_name = models.CharField(max_length=50)
-    customer_address = models.CharField(max_length=50)
-    customer_phone = models.CharField(max_length=50)
-    customer_email = models.CharField(max_length=50)
-    customer_payment_method = models.CharField(max_length=50)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=50)
+    phone = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    payment_method = models.CharField(max_length=50)

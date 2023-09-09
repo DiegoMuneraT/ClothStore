@@ -1,0 +1,36 @@
+{% extends 'components/navbar.html' %}
+{%  block title %}Drots - Store {% endblock %}
+{% block content %}
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://img.freepik.com/vector-premium/camisa-color-negro_712192-2.jpg" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">
+           {{product.category}}
+        </h5>
+        {% if product.price > 160 %}
+          <p class="card-text">
+            <small class="text-muted">
+              <span class="badge bg-danger">Exclusivo</span>
+              Precio: ${{product.price}}
+            </small>
+          </p>
+        {% else %}
+          <p class="card-text">
+            <small class="text-muted">
+              Precio: ${{product.price}}
+            </small>
+          </p>
+        {% endif %}
+        {{product.description}} <br/>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+  
