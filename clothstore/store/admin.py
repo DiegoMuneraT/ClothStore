@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Clothe
+from .models import Order
 # Register your models here.
-admin.site.register(Clothe)
+admin.site.register(Order)
