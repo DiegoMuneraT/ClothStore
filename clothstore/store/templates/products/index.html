@@ -5,12 +5,25 @@
     {% for item in clothes %}
     <div class="col-md-4">  {# Assuming a grid system like Bootstrap's; adjust as needed #}
         <div class="card mb-4">
-            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="card-img-top">
+            <img src="https://img.freepik.com/vector-premium/camisa-color-negro_712192-2.jpg" alt="{{ item.name }}" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">{{ item.name }}</h5>
-                <p class="card-text">{{ item.description }}</p>
-                <p class="card-price">${{ item.price }}</p>
-                <a href="{% url 'clothes_detail' item.id %}" class="btn btn-primary">View Details</a>
+                <small class="text-muted"><p class="card-text">{{ item.description }}</p></small>
+                {% if item.price > 25000 %}
+                <p class="card-text">
+                    <small class="text-muted">
+                    Precio: ${{item.price}}
+                    <span class="badge bg-danger">Exclusivo</span>
+                    </small>
+                </p>
+                {% else %}
+                <p class="card-text">
+                    <small class="text-muted">
+                    Precio: ${{item.price}}
+                    </small>
+                </p>
+                {% endif %}
+                <a href="{% url 'product' item.id %}" class="btn btn-primary">Ver detalles</a>
             </div>
         </div>
     </div>

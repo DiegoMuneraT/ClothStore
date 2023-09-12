@@ -43,7 +43,7 @@ class ProductShowView(View):
         
         viewData = {}
         product = get_object_or_404(Clothes, pk=product_id)
-        viewData["title"] = product.category + " - Drots"
+        viewData["title"] = product.name + " - Drots"
         viewData["product"] = product
 
         return render(request, self.template_name, viewData)
