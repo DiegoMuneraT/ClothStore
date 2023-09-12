@@ -47,3 +47,7 @@ class ProductShowView(View):
         viewData["product"] = product
 
         return render(request, self.template_name, viewData)
+
+class LoginModalView(TemplateView):
+    template_name = 'pages/login.html'
+
