@@ -1,0 +1,83 @@
+@startuml clothing_store_diagram
+
+enum UserType {
+  Admin
+  Customer
+}
+
+enum ClothesSize {
+  S
+  M
+  L
+  XL
+}
+
+enum CardType {
+  Visa
+  MasterCard
+  ...
+}
+
+enum OrderStatus {
+  Placed
+  Shipped
+  Delivered
+}
+
+class User {
+  + username: String
+  + email: String
+  + password: String
+  + type: UserType
+}
+
+class Clothes {
+  + id: Integer
+  + name: String
+  + size: ClothesSize
+  + color: String
+  + price: Float
+  + description: String
+  + image: Image
+}
+
+class Order {
+  + id: Integer
+  + date: Date
+  + total_amount: Float
+  + status: OrderStatus
+  + items: Map<Clothes, Integer>
+}
+
+class Shipping {
+  + id: Integer
+  + address: String
+  + city: String
+  + postal_code: String
+  + country: String
+  + tracking_number: String
+}
+
+class CreditCard {
+  + cardholder_name: String
+  + expiry_date: Date
+  + last_four_digits: String
+  + card_type: CardType
+  + is_default: Boolean
+}
+
+class Review {
+  + rating: Integer [1-5]
+  + comment: String
+}
+
+' Define relationships
+User "1" -- "0..*" CreditCard : has
+User "1" -- "0..*" Order : places
+Order "1" -- "0..1" Shipping : has
+Order o-- Clothes : contains 
+Order "1" -- "0..1" CreditCard : uses
+Clothes "1" o-- "0..*" Review : has
+User "1" -- "0..*" Review : leaves
+
+@enduml

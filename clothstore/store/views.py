@@ -25,7 +25,7 @@ class ProductIndexView(View):
         viewData = {}
         viewData["title"] = "Products - Drots"
         viewData["subtitle"] = "Lista de productos"
-        viewData["products"] = Product.objects.all()
+        viewData["clothes"] = Clothes.objects.all()
 
         return render (request, self.template_name, viewData)
 
@@ -42,7 +42,7 @@ class ProductShowView(View):
             return redirect(reverse('tienda'))
         
         viewData = {}
-        product = get_object_or_404(Product, pk=product_id)
+        product = get_object_or_404(Clothes, pk=product_id)
         viewData["title"] = product.category + " - Drots"
         viewData["product"] = product
 
