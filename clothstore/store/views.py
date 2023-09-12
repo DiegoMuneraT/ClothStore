@@ -18,7 +18,7 @@ class ContactPageView(TemplateView):
 class BlogPageView(TemplateView):
     template_name = 'pages/blog.html'
 
-class PrendaIndexView(View):
+class ProductIndexView(View):
     template_name = 'products/index.html'
     
     def get(self, request):
