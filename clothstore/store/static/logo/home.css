@@ -1,0 +1,29 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.blurable-image {
+    transition: filter 0.3s ease;
+}
+
+.blurable-image:hover {
+    filter: blur(5px);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.05); /* Fondo semi-transparente para el texto */
+    color: white;
+    padding: 10px;
+    opacity: 0; 
+    transition: opacity 0.3s ease; /* Transición para suavizar la aparición */
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1; /* Hacemos visible el texto al pasar el mouse sobre la imagen */
+}
