@@ -30,6 +30,7 @@ class CreditCard(models.Model):
 
 class Order(models.Model):
     class ShippingStatus(models.TextChoices):
+        CART = 'CA', _('Cart')
         PLACED = 'PL', _('Placed')
         SHIPPED = 'SH', _('Shipped')
         DELIVERED = 'DL',_('Delivered')
