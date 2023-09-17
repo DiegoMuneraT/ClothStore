@@ -1,7 +1,7 @@
 
 window.addEventListener("DOMContentLoaded", () => {
-  const shoppingCart = document.querySelector("#btn-addCart");
-  shoppingCart.addEventListener("click", (e) => {
+  const AddShoppingCart = document.querySelector("#btn-addCart");
+  AddShoppingCart.addEventListener("click", (e) => {
     const productInfo = document.querySelector(".info-product")
     const idd = window.location.pathname.split("/").pop();
     console.log(idd)
