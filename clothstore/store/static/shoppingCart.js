@@ -1,10 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
-    const shoppingCart = document.querySelector("#ct-content")
-    const cart = document.querySelector("#cart-template")
+    const shoppingCart = document.querySelector(".product-list")
 
     const items = JSON.parse(localStorage.getItem("cart"));
     const shoppingList = items.map((item)=> {
-        return `    <ul>
+        return `    <ul class="card">
         <li>
             name: ${item.name}
         </li>
@@ -21,6 +20,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     const itemsRender = shoppingList.join(" ");
 
-    shoppingCart.insertAdjacentHTML("beforeend", itemsRender)
+    shoppingCart.insertAdjacentHTML("afterend", itemsRender)
 
 });

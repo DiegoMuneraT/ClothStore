@@ -1,11 +1,12 @@
 {% extends 'components/navbar.html' %}
 {% block title %}Drots - Store{% endblock %}
 {% block content %}
+{% load static %}
 <div class="row">
     {% for item in clothes %}
     <div class="col-md-4">  {# Assuming a grid system like Bootstrap's; adjust as needed #}
         <div class="card mb-4">
-            <img src="https://img.freepik.com/vector-premium/camisa-color-negro_712192-2.jpg" alt="{{ item.name }}" class="card-img-top">
+            <img src="{% static item.image %}" alt="{{ item.name }}" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">{{ item.name }}</h5>
                 <small class="text-muted"><p class="card-text">{{ item.description }}</p></small>
