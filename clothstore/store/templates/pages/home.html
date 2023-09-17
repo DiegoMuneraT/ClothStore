@@ -1,8 +1,36 @@
+<link rel="stylesheet" href="../../static/logo/home.css">
 {% extends 'components/navbar.html' %}
 {%  block title %}Drots - Store {% endblock %}
 {% block content %}
 <div class="text-center">
   Welcome to the application
 </div>
+<body>
+  <div class="container">
+    <div class="image-container">
+      <img src="https://img.freepik.com/psd-premium/hombres-edicion-limitada-maqueta-editable-camiseta-negra-su-marca_756803-21.jpg?w=2000" class="rounded img-thumbnail blurable-image" width="340" height="240"  alt="imagen1">
+      <a href="{% url 'tienda' %}" class="image-link">
+        <div class="image-overlay">Camisetas</div>
+      </a>
+      
+    </div>
+    <div class="image-container">
+      <img src="https://img.freepik.com/psd-premium/maqueta-espalda-camiseta-cuello-redondo-textura-jaspeada-ninos_126278-389.jpg?w=2000" alt="imagen2" class="rounded img-thumbnail float-end blurable-image" width="340" height="240">
+      <a href="{% url 'tienda' %}" class="image-link">
+        <div class="image-overlay">Pantalones</div>
+      </a>
+      
+    </div>
+    <div class="image-container">
+      <img src="https://cdn.discordapp.com/attachments/1073616258223833089/1152679353025581167/image.png" alt="imagen3" class="rounded img-thumbnail rounded mx-auto d-block blurable-image" width="340" height="240">
+      <a href="{% url 'tienda' %}" class="image-link">
+        <div class="image-overlay">Hoodie</div>
+      </a>
+      
+    </div>
+    
+    </div>
+  </div>
+</body>
 {% endblock %}
 
