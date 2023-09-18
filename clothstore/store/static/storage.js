@@ -21,6 +21,10 @@ class MemoryCart {
         delete this.items[id]
         localStorage.setItem("cart", JSON.stringify(this.items)) 
     }
+    updateQuantity(id, new_quantity){
+        this.items[id].quantity = new_quantity
+        localStorage.setItem("cart", JSON.stringify(this.items))
+    }
 
 }
 

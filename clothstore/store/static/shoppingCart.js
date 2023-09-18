@@ -10,8 +10,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
         const price = parseInt(document.querySelector(`#${price_id_ref}`).textContent)
         const quantity = ev.target.value
-        
         document.querySelector(`#${total_id_ref}`).textContent = price * quantity
+        data.updateQuantity(ev.target.dataset.idProduct, quantity)
     });
 
     shoppingCart.addEventListener("click", (eve)=>{
@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const items = data.getAll();
     const values = Object.values(items)
     const shoppingList = values.map((item)=> {
-        return `    <ul id="product-id-${item.id}"class="card shoppingItem-${item.id}">
+        return /*html*/`    <ul id="product-id-${item.id}"class="card shoppingItem-${item.id}">
         <li>
             name: ${item.name}
         </li>
@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
         </li>
         <li>
             <label for="quantity"> quantity:  </label>
-            <input type="number" name="quantity" data-id="totalId-${item.id}" data-price-id="priceId-${item.id}" value="${item.quantity}"
+            <input type="number" name="quantity" data-id-product="${item.id}" data-id="totalId-${item.id}" data-price-id="priceId-${item.id}" value="${item.quantity}"
             min="1"
              />
              <button type="button" id="deleteId-${item.id}" data-ul-id="product-id-${item.id}" data-id-product="${item.id}" class="btn btn-primary btn-sm"  href="#" role="button">Eliminar</button>  
