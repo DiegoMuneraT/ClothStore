@@ -60,3 +60,7 @@ class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
     rating = models.PositiveIntegerField()  # You can use validators to restrict it to a range like 1-5.
     comment = models.TextField()
+
+class AdminUser(models.Model):
+    user = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)

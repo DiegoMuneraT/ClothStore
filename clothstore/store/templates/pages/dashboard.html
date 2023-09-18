@@ -1,0 +1,7 @@
+{% extends 'components/navbarDashboard.html' %}
+{%  block title %}Drots - Store {% endblock %}
+{% block content %}
+<h1> Panel de administrador </h1>
+<br>
+<a href="{% url 'create' %}"><button type="button" class="btn btn-primary">Crear nuevo producto</button></a>
+{% endblock %}

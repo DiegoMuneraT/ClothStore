@@ -10,4 +10,7 @@ urlpatterns = [
     path('blog/', BlogPageView.as_view(), name='blog'),
     path('tienda/', ProductIndexView.as_view(), name='tienda'),
     path('tienda/<int:id>', ProductShowView.as_view(), name='product'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('dashboard/create', ProductCreateView.as_view(), name='form'),
+    path('create', ProductCreateView.as_view(), name='create'),
 ]
