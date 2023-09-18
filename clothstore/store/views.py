@@ -12,6 +12,9 @@ from django.contrib.auth.decorators import login_required
 class HomePageView(TemplateView):
     template_name = 'pages/home.html'
 
+class ShoppingCart(TemplateView):
+    template_name = 'pages/cart.html'
+
 class AboutPageView(TemplateView):
     template_name = 'pages/nosotros.html'
 

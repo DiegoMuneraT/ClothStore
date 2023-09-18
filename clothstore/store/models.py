@@ -9,7 +9,7 @@ class Clothes(models.Model):
         L = 'L', _('L')
         XL = 'XL', _('XL')
     name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    price = models.DecimalField(max_digits=7, decimal_places=0)
     color = models.CharField(max_length=50)
     size = models.CharField(max_length=2, choices=Size.choices, default=Size.S)
     description = models.TextField()
@@ -30,6 +30,7 @@ class CreditCard(models.Model):
 
 class Order(models.Model):
     class ShippingStatus(models.TextChoices):
+        CART = 'CA', _('Cart')
         PLACED = 'PL', _('Placed')
         SHIPPED = 'SH', _('Shipped')
         DELIVERED = 'DL',_('Delivered')
