@@ -1,8 +1,9 @@
 import { MemoryCart } from "./storage.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-    const shoppingCart = document.querySelector(".product-list")
 
+    const data = new MemoryCart();
+    const shoppingCart = document.querySelector(".product-list")
     shoppingCart.addEventListener("change", (ev)=>{
         const total_id_ref = ev.target.dataset.id
         const price_id_ref = ev.target.dataset.priceId
@@ -13,11 +14,19 @@ window.addEventListener("DOMContentLoaded", () => {
         document.querySelector(`#${total_id_ref}`).textContent = price * quantity
     });
 
-    const data = new MemoryCart();
+    shoppingCart.addEventListener("click", (eve)=>{
+        const delete_id_ref = eve.target.dataset.ulId
+        const deleted_item = document.querySelector(`#${delete_id_ref}`)
+        shoppingCart.removeChild(deleted_item)
+        data.deleteById(eve.target.dataset.idProduct)
+        console.log(eve.target.dataset)
+
+    });
+
     const items = data.getAll();
     const values = Object.values(items)
     const shoppingList = values.map((item)=> {
-        return `    <ul class="card shoppingItem-${item.id}">
+        return `    <ul id="product-id-${item.id}"class="card shoppingItem-${item.id}">
         <li>
             name: ${item.name}
         </li>
@@ -28,14 +37,15 @@ window.addEventListener("DOMContentLoaded", () => {
             <label for="quantity"> quantity:  </label>
             <input type="number" name="quantity" data-id="totalId-${item.id}" data-price-id="priceId-${item.id}" value="${item.quantity}"
             min="1"
-
              />
+             <button type="button" id="deleteId-${item.id}" data-ul-id="product-id-${item.id}" data-id-product="${item.id}" class="btn btn-primary btn-sm"  href="#" role="button">Eliminar</button>  
         </li>
         <li>
             total_price: <span id="totalId-${item.id}">${parseFloat(item.price) * parseInt(item.quantity)}</span>
         </li>
         </ul> `
     });
+    
 
     /* const selectItem = document.querySelector(".shoppingItem")
     const itemQuantity = document.querySelector(".quantity")
