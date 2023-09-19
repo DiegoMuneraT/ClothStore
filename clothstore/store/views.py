@@ -57,16 +57,18 @@ class ProductShowView(View):
 class ProductForm(forms.Form):
     class Meta:
         model = Clothes
-        fields = ['name', 'price', 'color', 'description']
+        fields = ['name', 'price', 'color', 'description', 'image']
     
 class ProductCreateView(View):
     template_name = 'products/create.html'
 
     def get(self, request):
         form = ProductForm()
-        viewData = {}
-        viewData["title"] = "Crear producto - Drots"
-        viewData["form"] = form
+        viewData = {
+            "title" : "Crear producto - Drots",
+            "form" : form,
+            "void" : "voooooooooid"
+        }
         return render(request, self.template_name, viewData)
     
     def post(self, request):
