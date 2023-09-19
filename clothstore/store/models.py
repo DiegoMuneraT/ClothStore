@@ -13,7 +13,7 @@ class Clothes(models.Model):
     color = models.CharField(max_length=50)
     size = models.CharField(max_length=2, choices=Size.choices, default=Size.S)
     description = models.TextField()
-    image = models.ImageField(upload_to='store/storage/images', default='/static/images/default.avif')
+    image = models.ImageField(upload_to='store/storage/images', default='/static/image/default.avif')
 
 class CreditCard(models.Model):
     class CardType(models.TextChoices):
