@@ -54,7 +54,7 @@ class ProductShowView(View):
 
         return render(request, self.template_name, viewData)
     
-class ProductForm(forms.Form):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Clothes
         fields = ['name', 'price', 'color', 'description', 'image']
@@ -73,7 +73,7 @@ class ProductCreateView(View):
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(request, "./products/p_created.html")
+            return redirect(reverse('dashboard'))
         else:
             viewData = {}
             viewData["title"] = "Crear producto - Drots"
