@@ -1,0 +1,30 @@
+{% extends 'components/navbar.html' %}
+{%  block title %}Drots - Store {% endblock %}
+{% block content %}
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'apiData.js' %}"></script>
+
+<div class="text-center mb-4">
+  Drots Store - Nuestra API
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <button type="button" id="btn-get-data" class="btn btn-success">Obtener datos internos</button>
+    <div id="data-container">
+    <!-- Contenido de datos de la api interna -->
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <button type="button" id="btn-get-data" class="btn btn-success">Obtener datos externos</button>
+    <div id="data-extern-container">
+    <!-- Contenido de datos de la api externa -->
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+

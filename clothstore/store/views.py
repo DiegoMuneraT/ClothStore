@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django import forms
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -15,8 +16,8 @@ class HomePageView(TemplateView):
 class ShoppingCart(TemplateView):
     template_name = 'pages/cart.html'
 
-class AboutPageView(TemplateView):
-    template_name = 'pages/nosotros.html'
+class APIPageView(TemplateView):
+    template_name = 'pages/api.html'
 
 class ContactPageView(TemplateView):
     template_name = 'pages/contacto.html'
@@ -106,3 +107,21 @@ class CreateView(TemplateView):
 def logout_view(request):
     logout(request)
     return redirect(reverse('home'))
+
+class ProductsApiView(View):
+
+    def get(self, request):
+        clothes = Clothes.objects.all()
+        data = {
+            'Products': [
+                {
+                    'name': clothes.name,
+                    'price': clothes.price,
+                    'color': clothes.color,
+                    'size': clothes.size,
+                    'description': clothes.description,
+                }
+                for clothes in clothes
+            ]
+        }
+        return JsonResponse(data)
