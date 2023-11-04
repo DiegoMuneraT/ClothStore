@@ -64,3 +64,9 @@ class Review(models.Model):
 class AdminUser(models.Model):
     user = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
+
+class Comment(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    telnumber = models.CharField(max_length=255)
+    comment = models.TextField()

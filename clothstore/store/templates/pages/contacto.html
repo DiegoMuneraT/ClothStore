@@ -10,24 +10,29 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form>
+            <form method="POST" action="{% url 'comment_create' %}">
+                {% csrf_token %}
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre">
+                    <input type="text" class="form-control" id="name"
+                        value="{{form.data.name}}" />
                 </div>
                 <div class="mb-3">
                     <label for="correo" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com">
+                    <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com"
+                        value="{{form.data.email}}" />
                 </div>
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Telefono</label>
-                    <input type="text" class="form-control" id="telefono">
+                    <input type="text" class="form-control" id="telnumber"
+                        value="{{form.data.telnumber}}" />
                 </div>
                 <div class="mb-3">
                     <label for="mensaje" class="form-label">Su mensaje</label>
-                    <textarea class="form-control" id="mensaje" rows="3"></textarea>
+                    <input type="text" class="form-control" id="comment" rows="3"
+                        value="{{form.data.comment}}" />
                 </div>
-                <button type="button" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </div>

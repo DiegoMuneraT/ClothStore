@@ -80,6 +80,32 @@ class ProductCreateView(View):
             viewData["title"] = "Crear producto - Drots"
             viewData["form"] = form
             return render(request, self.template_name, viewData)
+        
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'email', 'telnumber', 'comment']
+        
+class CommentCreateView(View):
+    template_name = "pages/contacto.html"
+
+    def get(self, request):
+        form = CommentForm()
+        viewData = {}
+        viewData["title"] = "Crear comentario - Drots"
+        viewData["form"] = form
+        return render(request, self.template_name, viewData)
+    
+    def post(self, request):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('contacto'))
+        else:
+            viewData = {}
+            viewData["title"] = "Crear comentario - Drots"
+            viewData["form"] = form
+            return render(request, self.template_name, viewData)
 
 class LoginView(TemplateView):
     template_name = 'pages/login.html'
@@ -100,9 +126,6 @@ class LoginView(TemplateView):
 
 class DashboardView(TemplateView):
     template_name = 'pages/dashboard.html'
-
-class CreateView(TemplateView):
-    template_name = 'pages/create.html'
 
 def logout_view(request):
     logout(request)
@@ -125,3 +148,42 @@ class ProductsApiView(View):
             ]
         }
         return JsonResponse(data)
+    
+class ProductEditView(TemplateView):
+    template_name = 'products/select_modify.html'
+
+class ProductEdit(View):
+    template_name = 'products/modify.html'
+
+    def get(self, request, id):
+        # Miramos si es valido el id
+        try:
+            product_id = id
+            if product_id < 1:
+                raise Exception("Invalid ID")
+        except:
+            return redirect(reverse('dashboard'))
+        
+        viewData = {}
+        product = get_object_or_404(Clothes, pk=product_id)
+        viewData["title"] = product.name + " - Drots"
+        viewData["product"] = product
+
+        return render(request, self.template_name, viewData)
+
+    def post(self, request, id):
+        # Miramos si es valido el id
+        try:
+            product_id = id
+            if product_id < 1:
+                raise Exception("Invalid ID")
+        except:
+            return redirect(reverse('dashboard'))
+        
+        product = get_object_or_404(Clothes, pk=product_id)
+        product.name = request.POST['name']
+        product.price = request.POST['price']
+        product.color = request.POST['color']
+        product.description = request.POST['description']
+        product.save()
+        return redirect(reverse('dashboard'))
