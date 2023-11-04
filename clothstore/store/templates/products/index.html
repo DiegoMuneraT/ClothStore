@@ -2,6 +2,12 @@
 {% block title %}Drots - Store{% endblock %}
 {% block content %}
 {% load static %}
+<div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Tienda</h1>
+    <p>En esta sección podrás visualizar los productos disponibles, ver con más detalle y agregarlos al carrito</p>
+</div>
+<br>
+
 <div class="row">
     {% for item in clothes %}
     <div class="col-md-4">  {# Assuming a grid system like Bootstrap's; adjust as needed #}

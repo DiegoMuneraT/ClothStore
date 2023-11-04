@@ -6,12 +6,15 @@
 <script src="{% static 'apiData.js' %}"></script>
 
 <div class="text-center mb-4">
-  Drots Store - Nuestra API
+  <h1 class="h3 mb-3 font-weight-normal">API</h1>
+  <p>En esta sección se puede ver el funcionamiento de la API interna y externa.</p>
 </div>
+<br>
 
 <div class="row justify-content-center">
   <div class="col-md-6">
     <button type="button" id="btn-get-data" class="btn btn-success">Obtener datos internos</button>
+    <hr>
     <div id="data-container">
     <!-- Contenido de datos de la api interna -->
     </div>
@@ -19,6 +22,7 @@
 
   <div class="col-md-6">
     <button type="button" id="btn-get-data" class="btn btn-success">Obtener datos externos</button>
+    <hr>
     <div id="data-extern-container">
     <!-- Contenido de datos de la api externa -->
     </div>

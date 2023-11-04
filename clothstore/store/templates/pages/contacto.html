@@ -1,23 +1,35 @@
 {% extends 'components/navbar.html' %}
 {%  block title %}Drots - Store {% endblock %}
 {% block content %}
-<div class="text-center">
-    <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre">
+<div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Contacto</h1>
+    <p>En esta sección podrás enviar una sugerencia, comentario o queja.</p>
+</div>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com">
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Telefono</label>
+                    <input type="text" class="form-control" id="telefono">
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Su mensaje</label>
+                    <textarea class="form-control" id="mensaje" rows="3"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="correo" class="form-label">Email</label>
-        <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com">
-    </div>
-    <div class="mb-3">
-        <label for="telefono" class="form-label">Telefono</label>
-        <input type="text" class="form-control" id="telefono">
-    </div>
-    <div class="mb-3">
-        <label for="mensaje" class="form-label">Su mensaje</label>
-        <textarea class="form-control" id="mensaje" rows="3"></textarea>
-    </div>
-    <button type="button" class="btn btn-primary">Enviar</button>
 </div>
 {% endblock %}
