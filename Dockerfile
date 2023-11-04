@@ -11,6 +11,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copia el código de tu proyecto al contenedor
+COPY clothstore/ /app/clothstore/
 COPY . .
 
 # Expone el puerto en el que se ejecutará la aplicación de Django (ajusta el puerto según tus necesidades)
