@@ -1,0 +1,29 @@
+{% extends 'components/navbar.html' %}
+{%  block title %}Drots - Store {% endblock %}
+{% block content %}
+<div class="text-center">
+  
+<head>
+  <title>Crear camisa</title>
+</head>
+<body>
+  <h1>Crear camisa</h1>
+  <h2>Personaliza tu camisa con tu pokemon favorito</h2>
+
+  <form action="/custom/preview" method="post">
+    {% csrf_token %}
+    <input type="text" name="textbox" placeholder="Nombre del pokemon">
+    <select name="option_selector">
+      <option value="modelo">Modelo</option>
+      <option value="minimalista">Minimalista</option>
+    </select>
+    <input type="submit" value="Send" />
+  </form>
+
+  <img src="https://printful-upload.s3-accelerate.amazonaws.com/tmp/3800c70c0d000a705b93a58531d18201/womens-round-neck-tee-white-left-front-2-6547b9b98f69c.jpg" class="rounded img-thumbnail float-end blurable-image" width="340" height="240">
+
+</body>
+
+</div>
+{% endblock %}
+

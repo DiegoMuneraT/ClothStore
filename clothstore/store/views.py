@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from clothstore.services.shirtInterface import *
 
 # Create your views here.
 
@@ -187,3 +188,34 @@ class ProductEdit(View):
         product.description = request.POST['description']
         product.save()
         return redirect(reverse('dashboard'))
+
+class CustomCreationView(TemplateView):
+    template_name = 'pages/custom.html'
+
+    
+
+class CustomPreviewView(TemplateView):
+    template_name = 'pages/preview.html'
+    def post(self, request):
+        shirt = ShirtDesign()
+        modelo = Printful()
+        minimalista = PokeShirt()
+        option = request.POST["option_selector"]
+        if request.method == 'POST' and option == 'modelo':
+            textbox_value = request.POST['textbox']
+            design = shirt.getDesign(textbox_value)
+            mockup = modelo.createMockup(design)
+            context = {
+                'image_url': mockup
+                }
+            return render(request,'pages/preview.html', context) 
+        else:
+            textbox_value = request.POST['textbox']
+            design = shirt.getDesign(textbox_value)
+            mockup = minimalista.createMockup(design)
+            context = {
+                'image_url': mockup
+                }
+            return render(request,'pages/preview.html', context) 
+            
+

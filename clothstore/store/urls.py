@@ -17,4 +17,6 @@ urlpatterns = [
     #path('dashboard/modify/<int:id>', ProductEdit.as_view(), name='editProduct'),
     path('api/products/', ProductsApiView.as_view() , name='get_products'),
     
+    path('custom', CustomCreationView.as_view(), name='custom'),
+    path('custom/preview', CustomPreviewView.as_view(), name='preview'),
 ]
