@@ -1,0 +1,59 @@
+{% extends 'components/navbar.html' %}
+{%  block title %}Drots - Store {% endblock %}
+{% block content %}
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'apiData.js' %}"></script>
+
+<div class="text-center mb-4">
+  <h1 class="h3 mb-3 font-weight-normal">API</h1>
+  <p>En esta sección se puede ver el funcionamiento de la API interna y externa.</p>
+</div>
+<br>
+
+<div class="container">
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+      <button type="button" id="btn-get-internal-data" class="btn btn-success">Obtener datos internos</button>
+      <button type="button" id="btn-clear-internal" class="btn btn-danger">Limpiar</button>
+      <hr>
+      <div id="data-container-internal">
+      <!-- Contenido de datos de la api interna -->
+      </div>
+      <p class="url-display" id="url-internal">URL de la API: http://127.0.0.1/api/products/</p>
+    </div>
+
+    <div class="col-md-6">
+      <button type="button" id="btn-get-external-data" class="btn btn-success">Obtener datos externos</button>
+      <button type="button" id="btn-clear-external" class="btn btn-danger">Limpiar</button>
+      <hr>
+      <div id="data-container-external">
+      <!-- Contenido de datos de la api externa -->
+      </div>
+      <p class="url-display" id="url-external">URL de la API externa: https://jsonplaceholder.typicode.com/posts</p>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .url-display{
+    font-weight: bold;
+    opacity: 0.6;
+  }
+
+  .btn {
+    margin-bottom: 10px;
+  }
+
+  .col-md-6 {
+    margin-bottom: 20px;
+  }
+
+</style>
+
+
+
+{% endblock %}
+

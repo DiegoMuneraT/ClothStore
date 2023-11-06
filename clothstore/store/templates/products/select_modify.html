@@ -1,12 +1,7 @@
-{% extends 'components/navbar.html' %}
-{% block title %}Drots - Store{% endblock %}
+{% extends 'components/navbarDashboard.html' %}
+{%  block title %} {{title}} {% endblock %}
 {% block content %}
 {% load static %}
-<div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Tienda</h1>
-    <p>En esta sección podrás visualizar los productos disponibles, ver con más detalle y agregarlos al carrito</p>
-</div>
-<br>
 
 <div class="row">
     {% for item in clothes %}
@@ -31,7 +26,7 @@
                     </small>
                 </p>
                 {% endif %}
-                <a href="{% url 'product' item.id %}" class="btn btn-primary">Ver detalles</a>
+                <a href="{% url 'editProduct' item.id %}" class="btn btn-primary">Modificar</a>
             </div>
         </div>
     </div>
