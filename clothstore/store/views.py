@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django import forms
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from clothstore.services.shirtInterface import *
 
 # Create your views here.
@@ -16,8 +17,8 @@ class HomePageView(TemplateView):
 class ShoppingCart(TemplateView):
     template_name = 'pages/cart.html'
 
-class AboutPageView(TemplateView):
-    template_name = 'pages/nosotros.html'
+class APIPageView(TemplateView):
+    template_name = 'pages/api.html'
 
 class ContactPageView(TemplateView):
     template_name = 'pages/contacto.html'
@@ -65,21 +66,45 @@ class ProductCreateView(View):
 
     def get(self, request):
         form = ProductForm()
-        viewData = {
-            "title" : "Crear producto - Drots",
-            "form" : form,
-            "void" : "voooooooooid"
-        }
+        viewData = {}
+        viewData["title"] = "Crear producto - Drots"
+        viewData["form"] = form
         return render(request, self.template_name, viewData)
     
     def post(self, request):
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(request, "./products/p_created.html")
+            return redirect(reverse('dashboard'))
         else:
             viewData = {}
             viewData["title"] = "Crear producto - Drots"
+            viewData["form"] = form
+            return render(request, self.template_name, viewData)
+        
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'email', 'telnumber', 'comment']
+        
+class CommentCreateView(View):
+    template_name = "pages/contacto.html"
+
+    def get(self, request):
+        form = CommentForm()
+        viewData = {}
+        viewData["title"] = "Crear comentario - Drots"
+        viewData["form"] = form
+        return render(request, self.template_name, viewData)
+    
+    def post(self, request):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('contacto'))
+        else:
+            viewData = {}
+            viewData["title"] = "Crear comentario - Drots"
             viewData["form"] = form
             return render(request, self.template_name, viewData)
 
@@ -103,12 +128,66 @@ class LoginView(TemplateView):
 class DashboardView(TemplateView):
     template_name = 'pages/dashboard.html'
 
-class CreateView(TemplateView):
-    template_name = 'pages/create.html'
-
 def logout_view(request):
     logout(request)
     return redirect(reverse('home'))
+
+class ProductsApiView(View):
+
+    def get(self, request):
+        clothes = Clothes.objects.all()
+        data = {
+            'Products': [
+                {
+                    'name': clothes.name,
+                    'price': clothes.price,
+                    'color': clothes.color,
+                    'size': clothes.size,
+                    'description': clothes.description,
+                }
+                for clothes in clothes
+            ]
+        }
+        return JsonResponse(data)
+    
+class ProductEditView(TemplateView):
+    template_name = 'products/select_modify.html'
+
+class ProductEdit(View):
+    template_name = 'products/modify.html'
+
+    def get(self, request, id):
+        # Miramos si es valido el id
+        try:
+            product_id = id
+            if product_id < 1:
+                raise Exception("Invalid ID")
+        except:
+            return redirect(reverse('dashboard'))
+        
+        viewData = {}
+        product = get_object_or_404(Clothes, pk=product_id)
+        viewData["title"] = product.name + " - Drots"
+        viewData["product"] = product
+
+        return render(request, self.template_name, viewData)
+
+    def post(self, request, id):
+        # Miramos si es valido el id
+        try:
+            product_id = id
+            if product_id < 1:
+                raise Exception("Invalid ID")
+        except:
+            return redirect(reverse('dashboard'))
+        
+        product = get_object_or_404(Clothes, pk=product_id)
+        product.name = request.POST['name']
+        product.price = request.POST['price']
+        product.color = request.POST['color']
+        product.description = request.POST['description']
+        product.save()
+        return redirect(reverse('dashboard'))
 
 class CustomCreationView(TemplateView):
     template_name = 'pages/custom.html'

@@ -14,7 +14,7 @@
         <h5 class="card-title">
            {{product.name}}
         </h5>
-        {% if product.price > 25000 %}
+        {% if product.price > 500 %}
           <p class="card-text">
             <small class="text-muted">
               <span class="badge bg-danger">Exclusivo</span>
@@ -24,6 +24,7 @@
         {% else %}
           <p class="card-text">
             <small class="text-muted">
+              <span class="badge bg-success">Oferta</span>
               Precio: $<span class="product-price">{{product.price}}</span>
             </small>
           </p>

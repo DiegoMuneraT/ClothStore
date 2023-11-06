@@ -2,34 +2,34 @@
 {% extends 'components/navbar.html' %}
 {%  block title %}Drots - Store {% endblock %}
 {% block content %}
-<div class="text-center">
-  Welcome to the application
-</div>
 <body>
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Bienvenido</h1>
+    <p>Bienvenido a nuestra tienda virtual, Drots Store.</p>
+  </div>
+  
   <div class="container">
     <div class="image-container">
-      <img src="https://img.freepik.com/psd-premium/hombres-edicion-limitada-maqueta-editable-camiseta-negra-su-marca_756803-21.jpg?w=2000" class="rounded img-thumbnail blurable-image" width="340" height="240"  alt="imagen1">
+      <img src="https://img.freepik.com/psd-premium/hombres-edicion-limitada-maqueta-editable-camiseta-negra-su-marca_756803-21.jpg?w=2000" class="rounded img-thumbnail float-end blurable-image" width="340" height="240"  alt="imagen1">
       <a href="{% url 'tienda' %}" class="image-link">
         <div class="image-overlay">Camisetas</div>
       </a>
-      
     </div>
+
     <div class="image-container">
       <img src="https://img.freepik.com/psd-premium/maqueta-espalda-camiseta-cuello-redondo-textura-jaspeada-ninos_126278-389.jpg?w=2000" alt="imagen2" class="rounded img-thumbnail float-end blurable-image" width="340" height="240">
       <a href="{% url 'tienda' %}" class="image-link">
         <div class="image-overlay">Pantalones</div>
-      </a>
-      
+      </a> 
     </div>
+
     <div class="image-container">
-      <img src="https://cdn.discordapp.com/attachments/1073616258223833089/1152679353025581167/image.png" alt="imagen3" class="rounded img-thumbnail rounded mx-auto d-block blurable-image" width="340" height="240">
+      <img src="https://img.freepik.com/foto-gratis/bff-impreso-sudadera-capucha-roja_53876-105408.jpg?t=st=1699120473~exp=1699121073~hmac=fe511291b21d2e86a29df2da8876f04a79a6db5fd53710b5e170c99709a76e43" alt="imagen3" class="rounded img-thumbnail float-end blurable-image" width="340" height="240">
       <a href="{% url 'tienda' %}" class="image-link">
         <div class="image-overlay">Hoodie</div>
       </a>
-      
     </div>
     
-    </div>
   </div>
 </body>
 {% endblock %}
