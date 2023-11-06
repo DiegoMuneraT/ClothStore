@@ -16,6 +16,8 @@ COPY . .
 # Cambia al directorio de la aplicacion
 WORKDIR /app/clothstore
 
+RUN python manage.py migrate
+
 # Expone el puerto en el que se ejecutará la aplicación de Django (ajusta el puerto según tus necesidades)
 EXPOSE 8000
 
